@@ -1,7 +1,1 @@
-﻿  Source.cpp
-C:\Users\Александр\source\repos\Project33\Project33\Source.cpp(192,8): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\Александр\source\repos\Project33\Project33\Source.cpp(291,49): warning C4805: ==: небезопасное смешение типа "bool" и типа "char" в операции
-C:\Users\Александр\source\repos\Project33\Project33\Source.cpp(291,54): warning C4806: ==: небезопасная операция: значение типа "bool", приведенное к типу "char", не может равняться данной константе
-C:\Users\Александр\source\repos\Project33\Project33\Source.cpp(306,50): warning C4805: ==: небезопасное смешение типа "bool" и типа "char" в операции
-C:\Users\Александр\source\repos\Project33\Project33\Source.cpp(306,53): warning C4806: ==: небезопасная операция: значение типа "bool", приведенное к типу "char", не может равняться данной константе
-  Project33.vcxproj -> C:\Users\Александр\source\repos\Project33\x64\Debug\Project33.exe
+﻿  Project33.vcxproj -> C:\Users\Александр\source\repos\Project33\x64\Debug\Project33.exe
