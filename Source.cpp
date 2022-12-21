@@ -181,8 +181,8 @@ int main() {
 
 	vector<string> TABLE;
 
-	string func_vector = "0011010100011001";
-	//string func_vector = "00110011";
+	//string func_vector = "0011010100011001";
+	string func_vector = "1101010100101010";
 
 	bool VARIATIVE = true;
 
