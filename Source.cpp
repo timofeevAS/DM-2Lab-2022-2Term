@@ -88,6 +88,13 @@ void generateNF(vector<string>& PDNF, vector<string>& PCNF, vector<string>& TABL
 
 	}
 
+	if (PDNF.empty()) {
+		PDNF.push_back("0");
+	}
+	if (PCNF.empty()) {
+		PCNF.push_back("0");
+	}
+
 
 }
 
@@ -97,7 +104,9 @@ bool calcByPDNF(string params, vector<string>& PDNF) {
 	for (int i = 0; i < PDNF.size(); i++) {
 		string expr = PDNF[i];
 		bool tmp_x = true;
-
+		if (expr == "0") {
+			return false;
+		}
 		while (expr.size() != 0) {
 			int isNeg;
 			(expr[0] == '!') ? isNeg = 1 : isNeg = 0;
@@ -121,6 +130,9 @@ bool calcByPDNF(string params, vector<string>& PDNF) {
 		ans = (tmp_x || ans);
 		
 	}
+
+	
+
 	return ans;
 }
 
@@ -144,6 +156,7 @@ void createZhegalkin(vector<string>& ZHG,string func_vector, vector<string>&TABL
 		triangle.push_back(tmp);
 		func_vector = tmp;
 	}
+
 	if (triangle[0][0] == '1') {
 		ZHG.push_back("1");
 	}
@@ -157,6 +170,10 @@ void createZhegalkin(vector<string>& ZHG,string func_vector, vector<string>&TABL
 			}
 			ZHG.push_back(tmp);
 		}
+	}
+
+	if (ZHG.empty()) {
+		ZHG.push_back("1+1");
 	}
 
 }
@@ -182,7 +199,23 @@ int main() {
 	vector<string> TABLE;
 
 	//string func_vector = "0011010100011001";
-	string func_vector = "1101010100101010";
+	//string func_vector = "0000000000000000";
+	string func_vector = "1231";
+	
+	cout << "VECTOR OF FUNC: " << func_vector << "\n";
+
+
+	if (!(func_vector.size() & (func_vector.size() - 1)) == 0) {
+		cout << "SIZE OF VECTOR SHOULD BE POWER OF 2";
+		return 0;
+	}
+
+	for (int i = 0; i < func_vector.size(); i++) {
+		if (func_vector[i] != '1' || func_vector[i] != '0') {
+			cout << "BINOMIAL FUNCTION CAN HAS ONLY 1 and 0 VALUES";
+			return 0;
+		}
+	}
 
 	bool VARIATIVE = true;
 
@@ -210,8 +243,7 @@ int main() {
 		}
 	}
 
-	cout << "VECTOR OF FUNC: " << func_vector << "\n";
-
+	
 	cout << "\n\nTRUTH OF TABLE: \n";
 
 	for (int i = 0; i < TABLE.size(); i++) {
@@ -246,12 +278,14 @@ int main() {
 		}
 	}
 
+
 	cout << "\n\nPCNF:\n";
 	for (int i = 0; i < PCNF.size(); i++) {
 		cout << "(" + PCNF[i] + ")";
 		if (i + 1 < PCNF.size()) {
 			cout << "&";
 		}
+		
 	}
 	cout << "\n\nCALCULATE VALUE BY PDNF: \n";
 	for (int i = 0; i < TABLE.size(); i++) {
